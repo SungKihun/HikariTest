@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
-import lombok.extern.log4j.Log4j;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,8 +21,7 @@ public class DataSourceTests {
 
     @Test
     public void testConnection() {
-
-        try (Connection con = dataSource.getConnection()){
+        try (Connection con = dataSource.getConnection()) {
             log.info(con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
