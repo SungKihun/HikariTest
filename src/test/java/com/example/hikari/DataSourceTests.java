@@ -11,11 +11,12 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 @SpringBootTest
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/context-datasource.xml")
 @Log4j2
 public class DataSourceTests {
-
     @Setter(onMethod_ = { @Autowired})
     private DataSource dataSource;
 
@@ -24,7 +25,7 @@ public class DataSourceTests {
         try (Connection con = dataSource.getConnection()) {
             log.info(con);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            fail(e.getMessage());
         }
     }
 }
